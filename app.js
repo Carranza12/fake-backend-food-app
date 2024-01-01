@@ -205,7 +205,7 @@ app.get("/pedidos", (req, res) => {
   res.json(pedidos);
 });
 
-app.get("/login", (req, res) => {
+app.post("/login", (req, res) => {
   const { email, password } = req.body;
   const user = usuarios.find((u) => u.email === email && u.pass === password);
   if (!user) {
@@ -222,6 +222,9 @@ app.get("/login", (req, res) => {
   });
 });
 
+app.get("/categorias", (req, res) => {
+    res.status(200).json(categories);
+  });
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
